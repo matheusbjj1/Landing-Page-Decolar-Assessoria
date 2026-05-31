@@ -1,0 +1,6 @@
+{
+  "name": "Decolar Assessoria",
+  "description": "Assessoria especializada em Marketing, Gestão Comercial e Inteligência Artificial para o setor de esquadrias.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
