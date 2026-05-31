@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/leads",
+      "destination": "/api/leads.ts"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/leads.ts"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
