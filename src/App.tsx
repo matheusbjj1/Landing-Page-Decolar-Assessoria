@@ -25,6 +25,7 @@ import {
   MapPin
 } from 'lucide-react';
 import LeadModal from './components/LeadModal';
+import SheetsModal from './components/SheetsModal';
 import DecolarLogo from './components/DecolarLogo';
 import Testimonials from './components/Testimonials';
 import EbookSection from './components/EbookSection';
@@ -32,6 +33,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isSheetsInfoOpen, setIsSheetsInfoOpen] = useState<boolean>(false);
   const [modalSource, setModalSource] = useState<string>('Navbar CTA');
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -236,18 +238,23 @@ export default function App() {
             {/* Tag with gold border */}
             <div className="inline-block border border-brand-gold px-3 py-1.5 bg-white/5 rounded-sm">
               <span className="font-mono uppercase text-[10.5px] tracking-[0.1em] text-brand-gold block font-bold">
-                MARKETING, GESTÃO DE VENDAS E TECNOLOGIA PARA ESQUADRIAS
+                A ÚNICA ACESSORIA DO PAÍS 100% ESPECIALIZADA EM ESQUADRIAS
               </span>
             </div>
 
-            {/* Headline with 'indicação' highlighted in gold */}
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-semibold leading-[1.1] tracking-[-0.02em]">
-              Chega de depender de <span className="text-brand-gold relative inline-block">indicação<span className="absolute bottom-[2px] left-0 w-full h-[3px] bg-brand-gold/30 rounded-full" /></span> para vender.
+            {/* Headline as H1 */}
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-[44px] lg:text-[50px] text-white font-semibold leading-[1.15] tracking-[-0.01em]">
+              Marketing Digital e Gestão Comercial Especializada em <span className="text-brand-gold relative inline-block">Esquadrias<span className="absolute bottom-[2px] left-0 w-full h-[3px] bg-brand-gold/30 rounded-full" /></span>.
             </h1>
+
+            {/* High-converting hook */}
+            <p className="font-serif text-lg sm:text-xl md:text-2xl text-white/95 font-light my-2">
+              Acelere suas vendas. Chega de depender apenas de <span className="underline decoration-brand-gold text-white font-medium">indicação</span> para fechar novos pedidos.
+            </p>
 
             {/* Subhead */}
             <p className="font-sans text-base sm:text-lg text-white/80 leading-[1.7] max-w-2xl font-light">
-              A Decolar gera clientes qualificados para empresas de esquadrias todos os meses, com tecnologia, processo comercial e foco total no seu setor.
+              Somos uma agência de posicionamento de marca, marketing digital e inteligência comercial para o nicho de Esquadrias. Ajudamos fábricas, serralherias, marcas e revendas a captarem dezenas de orçamentos qualificados de construtoras, arquitetos e clientes finais de alto padrão.
             </p>
 
             {/* Two Action Buttons side by side */}
@@ -470,12 +477,12 @@ export default function App() {
 
             {/* Title */}
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-brand-blue font-semibold tracking-[-0.02em]">
-              Clientes qualificados todo mês. Sem você depender de indicação.
+              Como ajudamos sua fábrica ou empresa de esquadrias a vender mais.
             </h2>
 
             {/* Subhead */}
             <p className="font-sans text-brand-blue/80 text-base leading-[1.7]">
-              A gente resolve o que agência genérica nunca resolveu: o ciclo inteiro, do primeiro clique ao orçamento fechado. Com tecnologia e inteligência artificial trabalhando enquanto você cuida da operação.
+              Unimos marketing de alta performance com inteligência comerical e inteligência artificial para dominar o mercado de esquadrias da sua região.
             </p>
           </div>
 
@@ -484,18 +491,18 @@ export default function App() {
             {[
               {
                 num: "01",
-                title: "Clientes certos, no momento certo",
-                desc: "Atraímos donos de obra, construtoras, incorporadoras e arquitetos com projeto real, não lead curioso que nunca vai comprar."
+                title: "Atração de Leads Qualificados / Fechamento de Projetos",
+                desc: "Estruturamos campanhas segmentadas para captar leads qualificados (tanto B2C de alto padrão quanto B2B/construtoras). Atraímos clientes prontos para comprar, não curiosos."
               },
               {
                 num: "02",
-                title: "Nenhum lead desperdiçado",
-                desc: "Usamos automação e IA para acompanhar cada contato ao longo do ciclo de compra. O lead que não fechou hoje é trabalhado até fechar."
+                title: "Estruturação Comercial (CRM e Processos)",
+                desc: "Implementamos sistemas de CRM e fluxos automatizados de contato. Garantimos que nenhum lead ou solicitação de orçamento seja esquecida ou perdida pelo comercial."
               },
               {
                 num: "03",
-                title: "Seu comercial fecha mais",
-                desc: "Não paramos no lead. Estruturamos o processo para que sua equipe converta mais, com menos esforço e resultado previsível."
+                title: "Fechamento de Projetos e Obras de Alto Padrão",
+                desc: "Apoiamos sua equipe de vendas estruturando processos de negociação validados para transformar orçamentos complexos em contratos homologados e assinados."
               }
             ].map((step, idx) => (
               <motion.div
@@ -534,7 +541,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* SEÇÃO 5 — POR QUE A DECOLAR */}
+      {/* SEÇÃO 5 — NOSSAS SOLUÇÕES */}
       <section 
         id="por-que-decolar" 
         className="bg-brand-blue py-[48px] md:py-[80px]"
@@ -545,42 +552,42 @@ export default function App() {
             {/* Tag */}
             <div className="inline-block bg-[#C9A96E]/12 px-3 py-1.5 rounded-full">
               <span className="font-mono uppercase text-[11px] tracking-[0.1em] text-brand-gold block font-bold">
-                POR QUE NÓS
+                MÉTODOS E ENTREGAS 
               </span>
             </div>
 
             {/* Title */}
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-semibold tracking-[-0.02em]">
-              Qualquer agência faz tráfego. Nenhuma entende de esquadria como a gente.
+              Nossas Soluções para o Mercado de Esquadrias.
             </h2>
 
             {/* Subtext */}
             <p className="font-sans text-white/55 text-base md:text-lg leading-[1.7]">
-              Agência genérica vai levar meses pra entender seu ciclo de venda, sua linguagem e seu cliente. A gente já chegou sabendo, porque esquadria é tudo que a gente faz.
+              Substituímos o achismo de agências genéricas por metodologias comerciais validadas e focadas exclusivamente no setor de esquadrias.
             </p>
           </div>
 
-          {/* 4 Differential blocks in grid 2x2 */}
+          {/* 4 Solutions blocks in grid 2x2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {[
               {
-                title: "Especialização que nenhuma agência tem",
-                desc: "Conhecemos o ciclo de 18 a 24 meses da obra ao pedido. Sabemos como falar com construtor, arquiteto e dono de imóvel. Não existe curva de aprendizado.",
+                title: "Gestão de Tráfego Pago (Anúncios no Google e Meta)",
+                desc: "Atraia dezenas de construtoras, arquitetos e donos de obras residenciais de alto padrão buscando ativamente por esquadrias em sua região geográfica de atendimento.",
                 icon: <Compass className="w-6 h-6 text-brand-gold" />
               },
               {
-                title: "Do lead ao fechamento, sem parar no meio",
-                desc: "A maioria das agências entrega o lead e some. A gente acompanha até o orçamento ser fechado. Você não paga por clique. Você paga por resultado.",
+                title: "Implantação de CRM e Processos de Vendas (Gestão Comercial)",
+                desc: "Estruturamos todo o funil de comercialização e acompanhamento de orçamentos complexos. Transformamos leads de esquadrias em contratos fechados com inteligência e controle.",
                 icon: <ShieldCheck className="w-6 h-6 text-brand-gold" />
               },
               {
-                title: "Você sabe exatamente o que está comprando",
-                desc: "Sem relatório de alcance. Sem slide de engajamento. Você recebe leads com nome, telefone e produto de interesse, e acompanha tudo em tempo real.",
+                title: "Posicionamento de Marca para Projetos e Obras de Alto Padrão",
+                desc: "Agregue percepção de grife luxuosa para sua marca e seus produtos para parar de competir por preço baixo e aumentar a margem bruta de fechamento comercial.",
                 icon: <Eye className="w-6 h-6 text-brand-gold" />
               },
               {
-                title: "Tecnologia funcionando desde o primeiro dia",
-                desc: "Automação e IA aplicadas diretamente no processo comercial da sua empresa. Não é promessa, é infraestrutura rodando antes do fim da primeira semana.",
+                title: "Tecnologia de Inteligência Artificial Aplicada a Vendas",
+                desc: "Sistemas inteligentes integrados para atendimento veloz, pré-qualificação rápida de medidas e agendamento automático de consultas com orçamentistas da sua empresa.",
                 icon: <Layers className="w-6 h-6 text-brand-gold" />
               }
             ].map((block, idx) => (
@@ -741,10 +748,17 @@ export default function App() {
 
           <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 font-mono">
             <span>&copy; {new Date().getFullYear()} Decolar Assessoria LTDA. Todos os direitos reservados.</span>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-4">
               <span className="hover:text-white cursor-pointer transition-luxury">Políticas de Privacidade</span>
               <span>&bull;</span>
               <span className="hover:text-white cursor-pointer transition-luxury">Termos de Uso</span>
+              <span>&bull;</span>
+              <button 
+                onClick={() => setIsSheetsInfoOpen(true)}
+                className="hover:text-brand-gold text-brand-gold hover:bg-brand-gold/20 flex items-center gap-1 transition-luxury bg-brand-gold/10 px-2.5 py-1 border border-brand-gold/20 rounded-sm text-[11px] font-bold uppercase tracking-wider"
+              >
+                📊 Planilha Google Sheets
+              </button>
             </div>
           </div>
 
@@ -756,6 +770,12 @@ export default function App() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         ctaSource={modalSource} 
+      />
+
+      {/* SHEETS INTEGRATION MODAL */}
+      <SheetsModal
+        isOpen={isSheetsInfoOpen}
+        onClose={() => setIsSheetsInfoOpen(false)}
       />
 
       {/* FLOATING WHATSAPP BUTTON */}

@@ -219,7 +219,7 @@ app.post('/api/leads', async (req, res) => {
             </div>
             <div class="container-info" style="padding: 0 30px 25px 30px; font-size: 12px; color: #486581; line-height: 1.5; text-align: center;">
               <p style="background: #f0f4f8; padding: 12px; border-radius: 6px; margin: 0; font-style: italic;">
-                💡 <b>Dica Google Sheets</b>: Este formulário já está pronto para alimentar sua planilha. Defina a variável <code>GOOGLE_SHEETS_WEBHOOK_URL</code> no painel de ambiente para usufruir de sincronização em tempo real.
+                💡 <b>Sincronização Ativa</b>: Este lead foi enviado automaticamente em tempo real para a sua Planilha Google Sheets conectada.
               </p>
             </div>
             <div class="footer">
@@ -264,9 +264,10 @@ app.post('/api/leads', async (req, res) => {
       console.log('[Email] Servidor SMTP não está configurado completamente. Rodando no modo de simulação (lead salvo localmente).');
     }
 
-    // 3. GOOGLE SHEETS WEBHOOK STREAMING (Dynamic Integration)
+    // 3. GOOGLE SHEETS WEBHOOK STREAMING
     // Instantly routes lead data in real-time to Google Sheets script, Zapier, Make, etc.
-    const defaultWebhookUrl = 'https://script.google.com/macros/s/AKfycbx287n713LVYe4x9ZLghaiMSTvg3BaNzXgVI9Z-ZRlI4qi9I404r3p6ALdTxE7WZp0ZDA/exec';
+    const defaultWebhookUrl = 'https://script.google.com/macros/s/AKfycbzZEA1G9h54YL_oQ-l-4o-Mzji2Pgn9hpQgQ7GbWhspe2gZRuwwnMr1clOZAFe4FC-kWQ/exec';
+    
     let googleWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
     if (!googleWebhookUrl || 
@@ -373,17 +374,26 @@ app.post('/api/leads', async (req, res) => {
   }
 });
 
-// Serve leads_backup.json through a secured/custom preview endpoint for easy checking
-app.get('/api/leads/list-dev-only', (req, res) => {
-  if (fs.existsSync(LEADS_FILE)) {
-    try {
-      const fileContent = fs.readFileSync(LEADS_FILE, 'utf-8');
-      return res.json(JSON.parse(fileContent));
-    } catch (e) {
-      return res.status(500).json({ error: 'Falha ao ler o backup de leads' });
+// All public admin endpoints are completely removed for GDPR/LGPD compliance and security.
+
+// Secure Admin Leads list endpoint (Password protected)
+app.post('/api/admin/leads', (req, res) => {
+  try {
+    const { password } = req.body;
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    
+    if (!password || password !== adminPassword) {
+      return res.status(401).json({ error: 'Senha de acesso inválida.' });
     }
+
+    if (fs.existsSync(LEADS_FILE)) {
+      const fileContent = fs.readFileSync(LEADS_FILE, 'utf-8');
+      return res.json({ success: true, leads: JSON.parse(fileContent) });
+    }
+    return res.json({ success: true, leads: [] });
+  } catch (e) {
+    return res.status(500).json({ error: 'Falha ao carregar leads do servidor.' });
   }
-  return res.json([]);
 });
 
 // Vite middleware for development or Static Asset serving for production
