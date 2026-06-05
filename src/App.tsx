@@ -30,6 +30,7 @@ import DecolarLogo from './components/DecolarLogo';
 import Testimonials from './components/Testimonials';
 import EbookSection from './components/EbookSection';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import FaleConosco from './components/FaleConosco';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -38,6 +39,7 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [activeSection, setActiveSection] = useState<string>('inicio');
+  const [currentView, setCurrentView] = useState<'landing' | 'faleconosco'>('landing');
 
   // Track scroll for active section indicator & dynamic effects
   useEffect(() => {
@@ -71,11 +73,23 @@ export default function App() {
   };
 
   const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const yOffset = -80; // Navbar height offset
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+    if (currentView !== 'landing') {
+      setCurrentView('landing');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const yOffset = -80; // Navbar height offset
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        const yOffset = -80; // Navbar height offset
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
     setMobileMenuOpen(false);
   };
@@ -119,7 +133,12 @@ export default function App() {
           
           {/* Logo Decolar */}
           <div 
-            onClick={() => scrollToSection('inicio')} 
+            onClick={() => {
+              setCurrentView('landing');
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 50);
+            }} 
             className="flex items-center gap-3 cursor-pointer group select-none translate-y-[3px]"
           >
             <DecolarLogo size="md" className="group-hover:scale-105 transition-luxury shrink-0" />
@@ -136,24 +155,33 @@ export default function App() {
           {/* Central Links (50% Opacity) */}
           <div className="hidden lg:flex items-center gap-8">
             {[
-              { id: 'inicio', label: 'Início' },
-              { id: 'solucao', label: 'Como Funciona' },
-              { id: 'por-que-decolar', label: 'Diferenciais' },
-              { id: 'depoimentos', label: 'Depoimentos' },
-              { id: 'baixe-material', label: 'Baixar Material 📚' }
+              { id: 'inicio', label: 'Início', isSubpage: false },
+              { id: 'solucao', label: 'Como Funciona', isSubpage: false },
+              { id: 'por-que-decolar', label: 'Diferenciais', isSubpage: false },
+              { id: 'depoimentos', label: 'Depoimentos', isSubpage: false },
+              { id: 'baixe-material', label: 'Baixar Material 📚', isSubpage: false },
+              { id: 'faleconosco', label: 'Fale Conosco 💬', isSubpage: true }
             ].map((link) => (
               <button
                 id={`nav-link-${link.id}`}
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => {
+                  if (link.isSubpage) {
+                    setCurrentView('faleconosco');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else {
+                    scrollToSection(link.id);
+                  }
+                }}
                 className={`text-sm font-medium transition-luxury relative py-2 ${
-                  activeSection === link.id 
+                  (currentView === 'faleconosco' && link.id === 'faleconosco') || (currentView === 'landing' && activeSection === link.id && link.id !== 'faleconosco')
                     ? 'text-brand-gold opacity-100 font-semibold' 
-                    : 'text-white opacity-60 hover:opacity-100'
+                    : 'text-white/60 hover:text-white'
                 }`}
               >
                 {link.label}
-                {activeSection === link.id && (
+                {((currentView === 'faleconosco' && link.id === 'faleconosco') || 
+                  (currentView === 'landing' && activeSection === link.id && link.id !== 'faleconosco')) && (
                   <motion.div 
                     layoutId="activeNavLine" 
                     className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand-gold"
@@ -197,17 +225,30 @@ export default function App() {
           >
             <div className="p-6 space-y-4">
               {[
-                { id: 'inicio', label: 'Início' },
-                { id: 'solucao', label: 'Como Funciona' },
-                { id: 'por-que-decolar', label: 'Diferenciais' },
-                { id: 'depoimentos', label: 'Depoimentos' },
-                { id: 'baixe-material', label: 'Baixar Material 📚' }
+                { id: 'inicio', label: 'Início', isSubpage: false },
+                { id: 'solucao', label: 'Como Funciona', isSubpage: false },
+                { id: 'por-que-decolar', label: 'Diferenciais', isSubpage: false },
+                { id: 'depoimentos', label: 'Depoimentos', isSubpage: false },
+                { id: 'baixe-material', label: 'Baixar Material 📚', isSubpage: false },
+                { id: 'faleconosco', label: 'Fale Conosco 💬', isSubpage: true }
               ].map((link) => (
                 <button
                   id={`mobile-nav-link-${link.id}`}
                   key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left text-base text-white/85 py-2 border-b border-white/5 font-serif"
+                  onClick={() => {
+                    if (link.isSubpage) {
+                      setCurrentView('faleconosco');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                      scrollToSection(link.id);
+                    }
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`block w-full text-left text-base py-2 border-b border-white/5 font-serif ${
+                    (currentView === 'faleconosco' && link.id === 'faleconosco') || (currentView === 'landing' && activeSection === link.id && link.id !== 'faleconosco')
+                      ? 'text-brand-gold font-semibold'
+                      : 'text-white/85'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -225,8 +266,10 @@ export default function App() {
       </AnimatePresence>
 
       {/* SEÇÃO 1 — HERO */}
-      <section 
-        id="inicio" 
+      {currentView === 'landing' ? (
+        <>
+          <section 
+            id="inicio" 
         className="relative bg-brand-blue overflow-hidden pt-4 pb-[48px] md:pt-10 md:pb-[80px]"
       >
         {/* Geometric thin lines overlay */}
@@ -670,6 +713,13 @@ export default function App() {
 
         </div>
       </section>
+        </>
+      ) : (
+        <FaleConosco onBackToHome={() => {
+          setCurrentView('landing');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }} />
+      )}
 
       {/* FOOTER */}
       <footer className="bg-brand-blue-dark text-white pt-12 pb-8 border-t border-brand-gold/15 relative z-10">

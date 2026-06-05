@@ -1,6 +1,6 @@
 import React from 'react';
 
-const logoSrc = 'https://i.ibb.co/ycR5pts9/Vetorizada.png';
+const logoSrc = 'https://i.ibb.co/MxQ4RnkZ/Vetorizada-1.png';
 
 interface DecolarLogoProps {
   className?: string;
