@@ -14,6 +14,9 @@
       "destination": "/api/leads.ts"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

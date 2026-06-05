@@ -238,23 +238,18 @@ export default function App() {
             {/* Tag with gold border */}
             <div className="inline-block border border-brand-gold px-3 py-1.5 bg-white/5 rounded-sm">
               <span className="font-mono uppercase text-[10.5px] tracking-[0.1em] text-brand-gold block font-bold">
-                A ÚNICA ACESSORIA DO PAÍS 100% ESPECIALIZADA EM ESQUADRIAS
+                MARKETING, GESTÃO COMERCIAL E TECNOLOGIA PARA ESQUADRIA
               </span>
             </div>
 
             {/* Headline as H1 */}
             <h1 className="font-serif text-3xl sm:text-4xl md:text-[44px] lg:text-[50px] text-white font-semibold leading-[1.15] tracking-[-0.01em]">
-              Marketing Digital e Gestão Comercial Especializada em <span className="text-brand-gold relative inline-block">Esquadrias<span className="absolute bottom-[2px] left-0 w-full h-[3px] bg-brand-gold/30 rounded-full" /></span>.
+              Pare de depender de indicação para vender suas <span className="text-brand-gold relative inline-block">Esquadrias<span className="absolute bottom-[2px] left-0 w-full h-[3px] bg-brand-gold/30 rounded-full" /></span>.
             </h1>
-
-            {/* High-converting hook */}
-            <p className="font-serif text-lg sm:text-xl md:text-2xl text-white/95 font-light my-2">
-              Acelere suas vendas. Chega de depender apenas de <span className="underline decoration-brand-gold text-white font-medium">indicação</span> para fechar novos pedidos.
-            </p>
 
             {/* Subhead */}
             <p className="font-sans text-base sm:text-lg text-white/80 leading-[1.7] max-w-2xl font-light">
-              Somos uma agência de posicionamento de marca, marketing digital e inteligência comercial para o nicho de Esquadrias. Ajudamos fábricas, serralherias, marcas e revendas a captarem dezenas de orçamentos qualificados de construtoras, arquitetos e clientes finais de alto padrão.
+              A Decolar gera clientes qualificados para empresa de esquadria todos os meses com tecnologia, processo comercial e foco total no seu setor.
             </p>
 
             {/* Two Action Buttons side by side */}
@@ -491,18 +486,18 @@ export default function App() {
             {[
               {
                 num: "01",
-                title: "Atração de Leads Qualificados / Fechamento de Projetos",
-                desc: "Estruturamos campanhas segmentadas para captar leads qualificados (tanto B2C de alto padrão quanto B2B/construtoras). Atraímos clientes prontos para comprar, não curiosos."
+                title: "Marketing de Atração",
+                desc: "Estruturamos e otimizamos anúncios de tráfego pago de alta performance (Google Ads e Meta) focados exclusivamente em esquadrias. Atraímos clientes prontos para solicitar orçamento, reduzindo curiosos."
               },
               {
                 num: "02",
-                title: "Estruturação Comercial (CRM e Processos)",
-                desc: "Implementamos sistemas de CRM e fluxos automatizados de contato. Garantimos que nenhum lead ou solicitação de orçamento seja esquecida ou perdida pelo comercial."
+                title: "Gestão Comercial",
+                desc: "Implementamos sistemas de CRM e definimos processos comerciais de vendas validados para o setor de esquadrias. Garantimos que nenhum lead ou projeto complexo de orçamento seja esquecido."
               },
               {
                 num: "03",
-                title: "Fechamento de Projetos e Obras de Alto Padrão",
-                desc: "Apoiamos sua equipe de vendas estruturando processos de negociação validados para transformar orçamentos complexos em contratos homologados e assinados."
+                title: "Tecnologia de Vendas",
+                desc: "Aliamos inteligência artificial e integrações automatizadas para acelerar a qualificação de medidas, responder rapidamente novos contatos e elevar as taxas de fechamento com controle absoluto."
               }
             ].map((step, idx) => (
               <motion.div
