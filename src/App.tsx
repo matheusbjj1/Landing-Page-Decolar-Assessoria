@@ -41,6 +41,25 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<string>('inicio');
   const [currentView, setCurrentView] = useState<'landing' | 'faleconosco'>('landing');
 
+  // Track URL Hash to support direct subpage links (e.g. site.com/#faleconosco)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash || '';
+      if (hash.toLowerCase().includes('#faleconosco') || hash.toLowerCase().includes('faleconosco')) {
+        setCurrentView('faleconosco');
+        window.scrollTo({ top: 0 });
+      } else {
+        setCurrentView('landing');
+      }
+    };
+
+    // Run once on initial load
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   // Track scroll for active section indicator & dynamic effects
   useEffect(() => {
     const handleScroll = () => {
@@ -72,8 +91,23 @@ export default function App() {
     setMobileMenuOpen(false);
   };
 
+  const navigateToFaleConosco = () => {
+    window.location.hash = 'faleconosco';
+    setMobileMenuOpen(false);
+  };
+
+  const navigateToHome = () => {
+    if (window.location.hash) {
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
+      setCurrentView('landing');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
   const scrollToSection = (id: string) => {
     if (currentView !== 'landing') {
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
       setCurrentView('landing');
       setTimeout(() => {
         const el = document.getElementById(id);
@@ -133,12 +167,7 @@ export default function App() {
           
           {/* Logo Decolar */}
           <div 
-            onClick={() => {
-              setCurrentView('landing');
-              setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }, 50);
-            }} 
+            onClick={navigateToHome} 
             className="flex items-center gap-3 cursor-pointer group select-none translate-y-[3px]"
           >
             <DecolarLogo size="md" className="group-hover:scale-105 transition-luxury shrink-0" />
@@ -167,8 +196,7 @@ export default function App() {
                 key={link.id}
                 onClick={() => {
                   if (link.isSubpage) {
-                    setCurrentView('faleconosco');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    navigateToFaleConosco();
                   } else {
                     scrollToSection(link.id);
                   }
@@ -237,8 +265,7 @@ export default function App() {
                   key={link.id}
                   onClick={() => {
                     if (link.isSubpage) {
-                      setCurrentView('faleconosco');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      navigateToFaleConosco();
                     } else {
                       scrollToSection(link.id);
                     }
