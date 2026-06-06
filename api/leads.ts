@@ -218,6 +218,7 @@ export default async function handler(req: Request, res: Response) {
     }
 
     // 2. GOOGLE SHEETS WEBHOOK STREAMING
+    // Default webhook URL configured in Vercel environment variables as GOOGLE_SHEETS_WEBHOOK_URL
     const defaultWebhookUrl = 'https://script.google.com/macros/s/AKfycby685zGEv3Fu-spHnDSh_XWYQb-ZsbBnzA6-xHfUPO5TXQ1n3FwPKnbW6UWTAB-4Qvwnw/exec';
     let googleWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
