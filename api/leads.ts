@@ -218,7 +218,7 @@ export default async function handler(req: Request, res: Response) {
     }
 
     // 2. GOOGLE SHEETS WEBHOOK STREAMING
-    const defaultWebhookUrl = 'https://script.google.com/macros/s/AKfycbx287n713LVYe4x9ZLghaiMSTvg3BaNzXgVI9Z-ZRlI4qi9I404r3p6ALdTxE7WZp0ZDA/exec';
+    const defaultWebhookUrl = 'https://script.google.com/macros/s/AKfycby685zGEv3Fu-spHnDSh_XWYQb-ZsbBnzA6-xHfUPO5TXQ1n3FwPKnbW6UWTAB-4Qvwnw/exec';
     let googleWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
     if (!googleWebhookUrl || 
