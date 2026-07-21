@@ -1,24 +1,5 @@
 {
-  "version": 2,
   "framework": "vite",
   "buildCommand": "vite build",
-  "outputDirectory": "dist",
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/api/leads",
-      "destination": "/api/leads"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/leads"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "outputDirectory": "dist"
 }
