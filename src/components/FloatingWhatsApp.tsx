@@ -5,7 +5,7 @@ export default function FloatingWhatsApp() {
   // CONFIGURATION: Customize your WhatsApp number and default message here!
   // Use Country Code + Area Code + Number (no spaces, dashes, or parentheses)
   // Example: 5511999999999 (55 = Brazil, 11 = São Paulo, 999999999 = Number)
-  const WHATSAPP_NUMBER = '5573991160287';
+  const WHATSAPP_NUMBER = '5573981388802';
   const DEFAULT_MESSAGE = 'Olá! Gostaria de agendar meu diagnóstico gratuito para estruturar o sistema de captação na minha empresa de esquadrias.';
 
   const handleRedirect = () => {

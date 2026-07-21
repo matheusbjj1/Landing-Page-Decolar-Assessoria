@@ -791,12 +791,12 @@ export default function App() {
               <div className="flex flex-col items-center gap-1">
                 <a 
                   id="footer-whatsapp-link"
-                  href="https://wa.me/5573991160287?text=Ol%C3%A1%21%2520Gostaria%2520de%2520saber%2520mais%2520sobre%2520a%2520Decolar%2520Assessoria."
+                  href="https://wa.me/5573981388802?text=Ol%C3%A1%21%2520Gostaria%2520de%2520saber%2520mais%2520sobre%2520a%2520Decolar%2520Assessoria."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-brand-gold font-sans font-medium text-sm transition-colors"
                 >
-                  (73) 99116-0287
+                  (73) 98138-8802
                 </a>
                 <span className="inline-block bg-[#25D366]/10 text-[#25D366] text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[3px] font-bold border border-[#25D366]/20">
                   Suporte Ativo

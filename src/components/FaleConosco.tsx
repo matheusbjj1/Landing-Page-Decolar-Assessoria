@@ -134,7 +134,7 @@ export default function FaleConosco({ onBackToHome }: FaleConoscoProps) {
                   <div className="pt-3">
                     <a
                       id="faleconosco-whatsapp"
-                      href="https://wa.me/5573991160287?text=Olá! Gostaria de falar com um especialista sobre diagnóstico para minha empresa de esquadrias."
+                      href="https://wa.me/5573981388802?text=Olá! Gostaria de falar com um especialista sobre diagnóstico para minha empresa de esquadrias."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-luxury font-sans"
@@ -217,7 +217,7 @@ export default function FaleConosco({ onBackToHome }: FaleConoscoProps) {
                       Voltar para Home
                     </button>
                     <a
-                      href="https://wa.me/5573991160287?text=Olá, acabei de preencher o formulário no site e gostaria de agilizar o atendimento."
+                      href="https://wa.me/5573981388802?text=Olá, acabei de preencher o formulário no site e gostaria de agilizar o atendimento."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-2.5 border border-brand-gold text-brand-gold hover:bg-brand-gold/5 font-bold text-xs uppercase tracking-wider rounded-sm transition-luxury inline-block"
