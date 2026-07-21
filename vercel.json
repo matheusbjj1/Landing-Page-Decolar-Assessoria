@@ -7,11 +7,11 @@
   "rewrites": [
     {
       "source": "/api/leads",
-      "destination": "/api/leads.ts"
+      "destination": "/api/leads"
     },
     {
       "source": "/api/(.*)",
-      "destination": "/api/leads.ts"
+      "destination": "/api/leads"
     },
     {
       "handle": "filesystem"
